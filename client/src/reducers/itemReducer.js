@@ -13,15 +13,7 @@ const initialState = {
     },
     {
       id: uuid(),
-      name: 'A'
-    },
-    {
-      id: uuid(),
-      name: 'Good'
-    },
-    {
-      id: uuid(),
-      name: 'Guy'
+      name: 'Cool'
     }
   ]
 };
