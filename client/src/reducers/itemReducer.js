@@ -1,21 +1,13 @@
-import uuid from 'uuid';
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM } from '../actions/types';
+import {
+  GET_ITEMS,
+  ADD_ITEM,
+  DELETE_ITEM,
+  ITEMS_LOADING
+} from '../actions/types';
 
 const initialState = {
-  items: [
-    {
-      id: uuid(),
-      name: 'Chuck'
-    },
-    {
-      id: uuid(),
-      name: 'Is'
-    },
-    {
-      id: uuid(),
-      name: 'Cool'
-    }
-  ]
+  items: [],
+  loading: false
 };
 
 // Actions are dispatched to all reducers
@@ -23,7 +15,11 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_ITEMS:
-      return { ...state };
+      return {
+        ...state,
+        items: action.payload,
+        loading: false
+      };
     case ADD_ITEM:
       return {
         ...state,
@@ -35,6 +31,11 @@ export default (state = initialState, action) => {
         items: state.items.filter(item => {
           return item.id !== action.payload;
         })
+      };
+    case ITEMS_LOADING:
+      return {
+        ...state,
+        loading: true
       };
 
     default:
